@@ -59,7 +59,7 @@ export const ExternalApiComponent = () => {
       const token = await getAccessTokenSilently();
 
       const response = await fetch(
-        "http://ec2-54-252-161-30.ap-southeast-2.compute.amazonaws.com/text",
+        "https://smsbackendservice-alb-1418430754.ap-southeast-2.elb.amazonaws.com/text",
         {
           method: "POST",
           headers: {
