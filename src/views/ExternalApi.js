@@ -58,19 +58,22 @@ export const ExternalApiComponent = () => {
     try {
       const token = await getAccessTokenSilently();
 
-      const response = await fetch("http://localhost:5000/text", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          message: messageBody,
-          number: phoneNumber,
-          subject: "SUB",
-        }),
-      });
+      const response = await fetch(
+        "http://ec2-54-252-161-30.ap-southeast-2.compute.amazonaws.com/text",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            message: messageBody,
+            number: phoneNumber,
+            subject: "SUB",
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
