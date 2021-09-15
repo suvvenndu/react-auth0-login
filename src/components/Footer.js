@@ -7,7 +7,7 @@ const Footer = () => (
   //     Sample project provided by <a href="https://auth0.com">Auth0</a>
   //   </p>
   // </footer>
-  <></>
+  <footer></footer>
 );
 
 export default Footer;

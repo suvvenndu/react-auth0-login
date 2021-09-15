@@ -96,7 +96,7 @@ export const ExternalApiComponent = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="mb-5">
         {state.error === "consent_required" && (
           <Alert color="warning">
@@ -217,7 +217,7 @@ export const ExternalApiComponent = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
