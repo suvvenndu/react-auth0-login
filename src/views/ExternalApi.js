@@ -4,6 +4,7 @@ import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "../config";
 import Loading from "../components/Loading";
+import capitalizeFirstLetter from "../utils/utlities";
 
 export const ExternalApiComponent = () => {
   const { apiOrigin = "http://localhost:3001", audience } = getConfig();
@@ -17,8 +18,14 @@ export const ExternalApiComponent = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [messageBody, setMessageBody] = useState("");
 
-  const { getAccessTokenSilently, loginWithPopup, getAccessTokenWithPopup } =
-    useAuth0();
+  const {
+    getAccessTokenSilently,
+    loginWithPopup,
+    getAccessTokenWithPopup,
+    user,
+  } = useAuth0();
+
+  const sendAs = capitalizeFirstLetter(user.name.split(".")[0]);
 
   const handleConsent = async () => {
     try {
@@ -70,7 +77,7 @@ export const ExternalApiComponent = () => {
           body: JSON.stringify({
             message: messageBody,
             number: phoneNumber,
-            subject: "SUB",
+            subject: sendAs,
           }),
         }
       );
@@ -203,7 +210,7 @@ export const ExternalApiComponent = () => {
           onClick={callApi}
           disabled={!audience}
         >
-          Send SMS
+          Send SMS (as <em>{sendAs}</em>)
         </Button>
       </div>
 
