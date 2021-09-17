@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 auth_config.json
+src/home-incredible.html
+src/assets/media-temp
+src/assets/js
